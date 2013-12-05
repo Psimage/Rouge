@@ -1,0 +1,12 @@
+allprojects {
+    version = "1.0-SNAPSHOT"
+
+    ext.appName = "Rouge"
+    ext.gdxVersion = "0.9.9" // Use "1.0-SNAPSHOT" for nightly build
+
+    repositories {
+        mavenCentral()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        mavenLocal();
+    }
+}
