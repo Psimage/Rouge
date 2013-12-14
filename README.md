@@ -1,6 +1,3 @@
-Rouge
-=====
-
 Prerequisites
 =============
 1. Git 1.8.4+ (http://git-scm.com/download/win).
@@ -10,13 +7,17 @@ Prerequisites
 
 Build & Run
 ===========
-1. Open Console and move to the directory where you want this project to be cloned to. E.g:
-  cd C:\MyProjects\
-2. Clone this repository using git:
-  git clone https://github.com/Psimage/Rouge.git
-3. Move to the project directory:
-  cd Rouge
-4. Build & Run application using Gradle wrapper:
-  gradlew desktop:run
-  
+ 1. Open Console and move to the directory where you want this project to be cloned to. E.g:
+ _cd C:\MyProjects\_
+
+ 2. Clone this repository using git:
+ _git clone https://github.com/Psimage/Rouge.git_
+
+ 3. Move to the project directory:
+ _cd Rouge_
+
+ 4. Build & Run application using Gradle wrapper:
+ _gradlew desktop:run_
+
 Have Fun!
+========
