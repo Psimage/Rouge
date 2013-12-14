@@ -20,4 +20,9 @@ public class GameScreen extends ScreenAdapter {
 
         world.render();
     }
+
+    @Override
+    public void dispose() {
+        world.dispose();
+    }
 }
