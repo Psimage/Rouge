@@ -9,10 +9,9 @@ public class DesktopLauncher {
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.title = "Rouge";
         config.useGL20 = true;
-        config.width = 800;
-        config.height = 600;
+        config.width = Config.WINDOW_WIDTH;
+        config.height = Config.WINDOW_HEIGHT;
         config.resizable = false;
-        config.useGL20 = true;
         new LwjglApplication(new Rouge(), config);
     }
 }
