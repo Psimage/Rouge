@@ -3,7 +3,7 @@ apply plugin: "application"
 
 sourceCompatibility = 1.6
 
-mainClassName = "com.badlogic.gradletest.DesktopLauncher"
+mainClassName = "yaroslav.bugaev.rouge.DesktopLauncher"
 applicationName = appName
 
 sourceSets {
