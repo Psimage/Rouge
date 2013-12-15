@@ -38,9 +38,10 @@ public class SpriteController extends InputAdapter {
         nextPosition.setPosition(nextPosition.getPosition(nextPositionVector).add(vector));
 
         for (MapObject mapObject : collisionMap) {
-            Rectangle collision = ((RectangleMapObject) mapObject).getRectangle();
-            if (nextPosition.overlaps(collision)) {
-                return false;
+            if (mapObject.getProperties().get("type", String.class).equals("Collision")) {
+                if (nextPosition.overlaps(((RectangleMapObject) mapObject).getRectangle())) {
+                    return false;
+                }
             }
         }
 
