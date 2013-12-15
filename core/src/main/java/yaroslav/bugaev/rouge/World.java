@@ -47,24 +47,25 @@ public class World implements Disposable {
 
         map = assetManager.get("map.tmx");
 
-        mapRenderer = new OrthogonalTiledMapRenderer(map, 1 / TILE_SIZE, batch);
-        mapRenderer.setView(camera);
+        mapRenderer = new OrthogonalTiledMapRenderer(map, 1f / TILE_SIZE, batch);
 
         player = new Sprite(assetManager.get("hryts_32x32.png", Texture.class));
         RectangleMapObject playerStart = (RectangleMapObject) map.getLayers().get("Objects").getObjects().get("Player start");
         float x = playerStart.getRectangle().getX();
         float y = playerStart.getRectangle().getY();
-        player.setBounds(10, 10, 1, 1);
+        player.setBounds(x / TILE_SIZE, y / TILE_SIZE + 0.4f, 1, 1);
+
         playerController = new SpriteController(player);
+        Gdx.input.setInputProcessor(playerController);
     }
 
     public void update(float delta) {
         cameraController.update(delta);
-        playerController.update(delta);
     }
 
     public void render() {
         batch.setProjectionMatrix(camera.combined);
+        mapRenderer.setView(camera);
         batch.begin();
         mapRenderer.renderTileLayer((TiledMapTileLayer) map.getLayers().get("Bottom"));
         player.draw(batch);
