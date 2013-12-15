@@ -14,8 +14,6 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.Disposable;
 
-import static yaroslav.bugaev.rouge.Config.TILE_SIZE;
-
 public class World implements Disposable {
     private final OrthogonalTiledMapRenderer mapRenderer;
     private final TiledMap map;
@@ -30,8 +28,8 @@ public class World implements Disposable {
     public World() {
         batch = new SpriteBatch();
 
-        int viewportWidth = Gdx.graphics.getWidth() / TILE_SIZE;
-        int viewportHeight = Gdx.graphics.getHeight() / TILE_SIZE;
+        int viewportWidth = Gdx.graphics.getWidth();
+        int viewportHeight = Gdx.graphics.getHeight();
         camera = new OrthographicCamera(viewportWidth, viewportHeight);
         camera.translate(viewportWidth / 2f, viewportHeight / 2f);
         camera.update();
@@ -41,21 +39,20 @@ public class World implements Disposable {
         assetManager = new AssetManager();
         assetManager.load("hryts_32x32.png", Texture.class);
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
-        assetManager.load("sewer_tileset.png", Texture.class);
         assetManager.load("map.tmx", TiledMap.class);
         assetManager.finishLoading();
 
         map = assetManager.get("map.tmx");
 
-        mapRenderer = new OrthogonalTiledMapRenderer(map, 1f / TILE_SIZE, batch);
+        mapRenderer = new OrthogonalTiledMapRenderer(map, 1, batch);
 
         player = new Sprite(assetManager.get("hryts_32x32.png", Texture.class));
         RectangleMapObject playerStart = (RectangleMapObject) map.getLayers().get("Objects").getObjects().get("Player start");
         float x = playerStart.getRectangle().getX();
         float y = playerStart.getRectangle().getY();
-        player.setBounds(x / TILE_SIZE, y / TILE_SIZE + 0.4f, 1, 1);
+        player.setBounds(x, y + 10, 24, 24);
 
-        playerController = new SpriteController(player);
+        playerController = new SpriteController(player, map.getLayers().get("Objects").getObjects());
         Gdx.input.setInputProcessor(playerController);
     }
 
