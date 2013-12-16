@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="39" height="29" tilewidth="24" tileheight="24">
+ <tileset firstgid="1" name="sewer_tileset" tilewidth="24" tileheight="24">
+  <image source="sewer_tileset.png" trans="ff00ff" width="192" height="217"/>
+ </tileset>
+ <layer name="Bottom" width="39" height="29">
+  <data encoding="base64" compression="zlib">
+   eJztltsKwjAMhot3HiY4RdB5s3l27+H7P5IZNBBCWrr1sCK9+EBaxa8h/dNKKbUFOs0GqMjaFbhoWrZP96TvjIV6dMLav7jdgA9w1wyfHxHdDsACOGZYtyWwAtYebni+sWA9TG47oAb2Hm54PomnZQ/rgb0i1ZIyxQ3PR3kJaxxej9Bub31mH3qDm2+GhCS02wk4A02Gbq3wu6nwu+ubb9hvveP/26B31yXfqHvsfqN31yXfqHvsfjNlhylDBvevdo/db65ZQ3tJ2ovRb4VCbmAucELkhC+YC7Z8mdONv7NTvENc3fg7O8XMcnXj72zTzJrDDWdVrewzKzWmd3aZS3nyA1QbdLg=
+  </data>
+ </layer>
+ <layer name="Top" width="39" height="29" opacity="0.49">
+  <data encoding="base64" compression="zlib">
+   eJzt1isOgDAQRdEKQAFbQfATBNf9r4knOgLTBERnxD3JTU3Fk5NSLIf3gAq2/RNp26LW0qZ23zkvp7pULu9d+dupXg0Ndn01qknN3kMAAEBTdp9Yke4Uu08s7hQA0T2DBwOV
+  </data>
+ </layer>
+ <objectgroup name="Objects" width="39" height="29">
+  <object type="Collision" x="288" y="0" width="72" height="360"/>
+  <object type="Collision" x="96" y="192" width="72" height="144"/>
+  <object type="Collision" x="96" y="0" width="72" height="144"/>
+  <object type="Collision" x="0" y="0" width="48" height="336"/>
+  <object type="Collision" x="504" y="0" width="360" height="168"/>
+  <object type="Collision" x="240" y="528" width="120" height="96"/>
+  <object name="Player start" type="Player start" x="504" y="336" width="24" height="24"/>
+ </objectgroup>
+</map>
