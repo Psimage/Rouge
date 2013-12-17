@@ -4,4 +4,5 @@ sourceCompatibility = 1.6
 
 dependencies {
     compile "com.badlogicgames.gdx:gdx:$gdxVersion"
+    compile "net.onedaybeard.artemis:artemis-odb:0.5.0"
 }
