@@ -4,22 +4,18 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.MapObjects;
-import com.badlogic.gdx.maps.objects.RectangleMapObject;
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.utils.Timer;
 
 public class SpriteController extends InputAdapter {
-    private Sprite sprite;
-    private MapObjects collisionMap;
-    private final float offset = 24;
     private final Timer.Task moveTask;
+    private Sprite sprite;
+    private TiledMapTileLayer collisionLayer;
 
-    public SpriteController(Sprite sprite, MapObjects collisionMap) {
+    public SpriteController(Sprite sprite, TiledMap map) {
         this.sprite = sprite;
-        this.collisionMap = collisionMap;
+        collisionLayer = (TiledMapTileLayer) map.getLayers().get("Collision");
         moveTask = new Timer.Task() {
             @Override
             public void run() {
@@ -38,18 +34,16 @@ public class SpriteController extends InputAdapter {
 
     @Override
     public boolean keyDown(int keycode) {
-        Vector2 vector = new Vector2();
         if (keycode == Input.Keys.LEFT) {
-            vector.set(-offset, 0);
+            move(-1, 0);
         } else if (keycode == Input.Keys.RIGHT) {
-            vector.set(offset, 0);
+            move(1, 0);
         } else if (keycode == Input.Keys.UP) {
-            vector.set(0, offset);
+            move(0, 1);
         } else if (keycode == Input.Keys.DOWN) {
-            vector.set(0, -offset);
+            move(0, -1);
         }
 
-        move(vector);
         if (moveTask.isScheduled()) {
             moveTask.cancel();
         }
@@ -58,22 +52,12 @@ public class SpriteController extends InputAdapter {
         return super.keyDown(keycode);
     }
 
-    private void move(Vector2 vector) {
-        Rectangle nextPosition = sprite.getBoundingRectangle();
-        nextPosition.setHeight(1);
-        Vector2 nextPositionVector = new Vector2();
-        nextPosition.setPosition(nextPosition.getPosition(nextPositionVector).add(vector));
+    private void move(int dx, int dy) {
+        int toCellX = (int) (sprite.getX() / Config.TILE_SIZE) + dx;
+        int toCellY = (int) (sprite.getY() / Config.TILE_SIZE) + dy;
 
-        for (MapObject mapObject : collisionMap) {
-            if (mapObject.getProperties().get("type", String.class).equals("Collision")) {
-                if (nextPosition.overlaps(((RectangleMapObject) mapObject).getRectangle())) {
-                    return;
-                }
-            }
+        if (collisionLayer.getCell(toCellX, toCellY) == null) {
+            sprite.setPosition(toCellX * Config.TILE_SIZE, toCellY * Config.TILE_SIZE + 10);
         }
-
-        sprite.setPosition(nextPosition.getX(), nextPosition.getY());
     }
-
-
 }

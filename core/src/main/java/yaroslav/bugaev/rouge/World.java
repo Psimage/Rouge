@@ -52,7 +52,7 @@ public class World implements Disposable {
         float y = playerStart.getRectangle().getY();
         player.setBounds(x, y + 10, 24, 24);
 
-        playerController = new SpriteController(player, map.getLayers().get("Objects").getObjects());
+        playerController = new SpriteController(player, map);
         Gdx.input.setInputProcessor(playerController);
     }
 
