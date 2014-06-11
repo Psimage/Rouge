@@ -2,7 +2,7 @@ allprojects {
     version = "1.0-SNAPSHOT"
 
     ext.appName = "Rouge"
-    ext.gdxVersion = "0.9.9" // Use "1.0-SNAPSHOT" for nightly build
+    ext.gdxVersion = "1.1.0" // Use "1.1.1-SNAPSHOT" for nightly build
 
     repositories {
         mavenCentral()

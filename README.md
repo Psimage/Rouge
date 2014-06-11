@@ -2,8 +2,8 @@ Prerequisites
 =============
 1. Git 1.8.4+ (http://git-scm.com/download/win).
     Note: http://wiki.team-mediaportal.com/@api/deki/files/3808/=Git_Setup_-_Run_from_Windows_Command_Prompt.PNG
-2. JDK 1.6 (http://download.oracle.com/otn/java/jdk/6u45-b06/jdk-6u45-windows-i586.exe)
-3. JAVA_HOME environment variable pointing to the installation of JDK 1.6
+2. JDK 1.7 (http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)
+3. JAVA_HOME environment variable pointing to the installation of JDK 1.7
 
 Build & Run
 ===========

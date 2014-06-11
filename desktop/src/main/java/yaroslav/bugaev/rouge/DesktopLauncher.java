@@ -8,7 +8,7 @@ public class DesktopLauncher {
     public static void main(String[] arg) {
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
         config.title = "Rouge";
-        config.useGL20 = true;
+        config.useGL30 = false;
         config.width = Config.WINDOW_WIDTH;
         config.height = Config.WINDOW_HEIGHT;
         config.resizable = false;
